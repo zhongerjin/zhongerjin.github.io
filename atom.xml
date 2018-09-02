@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>一盒 Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://zhongerjin.github.io/"/>
+  <updated>2018-09-02T15:35:08.521Z</updated>
+  <id>https://zhongerjin.github.io/</id>
+  
+  <author>
+    <name>yiheDue</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue学习小记</title>
+    <link href="https://zhongerjin.github.io/2018/09/02/Vue%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/"/>
+    <id>https://zhongerjin.github.io/2018/09/02/Vue学习小记/</id>
+    <published>2018-09-02T14:49:10.000Z</published>
+    <updated>2018-09-02T15:35:08.521Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;场景1&quot;&gt;&lt;a href=&quot;#场景1&quot; class=&quot;headerlink&quot; title=&quot;场景1&quot;&gt;&lt;/a&gt;场景1&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;在子组件中需要监听路由变化&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;遇到的问题&quot;&gt;&lt;a hre
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zhongerjin.github.io/tags/JavaScript/"/>
+    
+      <category term="Vue" scheme="https://zhongerjin.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>探究JavaScript继承</title>
+    <link href="https://zhongerjin.github.io/2018/08/28/inheritance/"/>
+    <id>https://zhongerjin.github.io/2018/08/28/inheritance/</id>
+    <published>2018-08-28T14:23:37.000Z</published>
+    <updated>2018-08-30T08:09:17.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;拾起被我遗忘在脑后的知识,JavaScript的继承&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;探究JavaScript继承&quot;&gt;&lt;a href=&quot;#探究JavaScript继承&quot; class=&quot;headerlink&quot; title=&quot;探究J
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zhongerjin.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>给自己打打气</title>
+    <link href="https://zhongerjin.github.io/2018/08/28/%E7%BB%99%E8%87%AA%E5%B7%B1%E6%89%93%E6%89%93%E6%B0%94/"/>
+    <id>https://zhongerjin.github.io/2018/08/28/给自己打打气/</id>
+    <published>2018-08-27T16:20:50.000Z</published>
+    <updated>2018-08-28T14:42:18.583Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;这是第一篇博文，终于迈出了这一步= =&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;万事开头难，既然我已经迈出了第一步，相信后面的事情都会迎刃而解 &lt;del&gt;才怪呢&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&quot;否极泰来&quot;&gt;&lt;a href=&quot;#否极泰来&quot; cl
+      
+    
+    </summary>
+    
+      <category term="日常" scheme="https://zhongerjin.github.io/categories/%E6%97%A5%E5%B8%B8/"/>
+    
+    
+      <category term="碎碎念" scheme="https://zhongerjin.github.io/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+  </entry>
+  
+</feed>
