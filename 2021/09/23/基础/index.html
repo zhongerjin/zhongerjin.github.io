@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/mk.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/mk.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/mk.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/mk.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一盒 Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="变量类型JavaScript是一种动态语言，即不需要定义是什么类型，在程序运行过程中会自动判断类型。 6种原始类型：  Boolean String Number Null Undefined Symbol   原始类型不包括Object  typeoftypeof函数得到的值有以下几种类型:undefined、boolean、number、 string、 object、 function、 s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基础">
+<meta property="og:url" content="https://zhongerjin.github.io/2021/09/23/基础/index.html">
+<meta property="og:site_name" content="一盒 Blog">
+<meta property="og:description" content="变量类型JavaScript是一种动态语言，即不需要定义是什么类型，在程序运行过程中会自动判断类型。 6种原始类型：  Boolean String Number Null Undefined Symbol   原始类型不包括Object  typeoftypeof函数得到的值有以下几种类型:undefined、boolean、number、 string、 object、 function、 s">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-10-09T00:58:07.148Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基础">
+<meta name="twitter:description" content="变量类型JavaScript是一种动态语言，即不需要定义是什么类型，在程序运行过程中会自动判断类型。 6种原始类型：  Boolean String Number Null Undefined Symbol   原始类型不包括Object  typeoftypeof函数得到的值有以下几种类型:undefined、boolean、number、 string、 object、 function、 s">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhongerjin.github.io/2021/09/23/基础/"/>
+
+
+
+
+
+  <title>基础 | 一盒 Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/zhongerjin" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一盒 Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhongerjin.github.io/2021/09/23/基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yiheDue">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mk.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一盒 Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-23T17:14:44+08:00">
+                2021-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h1><p>JavaScript是一种动态语言，即不需要定义是什么类型，在程序运行过程中会自动判断类型。</p>
+<p>6种原始类型：</p>
+<ul>
+<li>Boolean</li>
+<li>String</li>
+<li>Number</li>
+<li>Null</li>
+<li>Undefined</li>
+<li>Symbol</li>
+</ul>
+<blockquote>
+<p>原始类型不包括Object</p>
+</blockquote>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a><strong>typeof</strong></h2><p><code>typeof</code>函数得到的值有以下几种类型:<code>undefined</code>、<code>boolean</code>、<code>number</code>、 <code>string</code>、 <code>object</code>、 <code>function</code>、 <code>symbol</code></p>
+<p>需要注意的有三点：</p>
+<ul>
+<li><code>typeof null</code>结果是<code>object</code>，实际上这是<code>typeof</code>的一个bug，null是原始值，非引用类型</li>
+<li><code>typeof [1,2]</code>结果是object，结果中没有array这一项，引用类型除了function其他的全部都是object</li>
+<li><code>typeof Symbol()</code>结果是<code>symbol</code>,这是ES6新增的知识点</li>
+</ul>
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a><strong>instanceof</strong></h2><p>用于实例和构造函数的对应。例如判断一个变量是否为数组，使用typeof无法判断，但可以使用<code>[1,2] instanceof Array</code>来判断。因为<code>[1,2]</code>是数组，构造函数是<code>Array</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">'bar'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(foo <span class="keyword">instanceof</span> Foo) <span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="值类型和引用类型"><a href="#值类型和引用类型" class="headerlink" title="值类型和引用类型"></a>值类型和引用类型</h2><p>JavaScript种变量类型传递方式分为<strong>值类型</strong>和<strong>引用类型</strong>，值类型变量包括<code>Boolean</code>、<code>String</code>、<code>Number</code>、<code>undefined</code>、<code>Null</code>；引用类型包括<code>Object</code>类的所有，如<code>Date</code>、<code>Array</code>、<code>Function</code>。在参数传递方式上，值类型是<strong>按值传递</strong>，引用类型是<strong>按共享传递</strong>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">10</span></span><br><span class="line"><span class="keyword">let</span> b = a;</span><br><span class="line">b = <span class="number">20</span></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// 10</span></span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">// 20</span></span><br></pre></td></tr></table></figure>
+<p>上述代码中，<code>a</code>,<code>b</code>都是值类型，两者分别修改赋值，相互之间没有任何影响。再看看引用类型的例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;<span class="attr">x</span>:<span class="number">10</span>, <span class="attr">y</span>: <span class="number">20</span>&#125;</span><br><span class="line"><span class="keyword">let</span> b = a</span><br><span class="line">b.x = <span class="number">100</span></span><br><span class="line">b.y = <span class="number">200</span></span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// &#123;x: 100, y:200&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">// &#123;x: 100, y:200&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>上述代码中，<code>a</code>,<code>b</code>都是引用类型。在执行<code>b = a</code>之后，修改b的属性值，a的值也跟着变化。因为a和b都是引用类型，指向了同一个内存地址，即两者引用的是同一个值，因此b修改属性时，a也随之改动</p>
+<blockquote>
+<p>按值传递的类型，复制一份存入栈内存，这类类型一般不占用太多内存，而且按值传递保证了其访问速度。按共享传递的类型，是复制其引用，而不是整个复制其值，保证过大的对象等不会因为不停复制内容而造成内存的浪费。</p>
+</blockquote>
+<h1 id="关于Ajax"><a href="#关于Ajax" class="headerlink" title="关于Ajax"></a>关于Ajax</h1><h2 id="手写XMLHttpRequest"><a href="#手写XMLHttpRequest" class="headerlink" title="手写XMLHttpRequest"></a>手写XMLHttpRequest</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readystate == <span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status == <span class="number">200</span>)&#123;</span><br><span class="line">            alert(xhr.responseText)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.open(<span class="string">"get"</span>, <span class="string">"/"</span>, <span class="literal">false</span>)</span><br><span class="line">xhr.send(<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="CSS知识"><a href="#CSS知识" class="headerlink" title="CSS知识"></a>CSS知识</h1><h2 id="选择器的权重和优先级"><a href="#选择器的权重和优先级" class="headerlink" title="选择器的权重和优先级"></a>选择器的权重和优先级</h2><p>css的权重分为四级，分别是：</p>
+<ul>
+<li>内联样式，<code>style=&quot;xxx&quot;</code>，权值为1000</li>
+<li>ID选择器，<code>#content</code>，权值为100</li>
+<li>类、伪类和属性选择器，如<code>.content</code>、<code>:hover</code>、<code>[attribute]</code>，权值为10</li>
+<li>代表元素选择器和伪元素选择器，如<code>div</code>、<code>p</code>权值为1</li>
+</ul>
+<blockquote>
+<p>注意：通用选择器(*)，子选择器(&gt;)，相邻同胞选择器(+)并不在这四个等级种，所以他们的权值都为0.<strong>权重值大的选择器其优先级也高，相同权重的优先级又遵循后定义覆盖前面定义的情况</strong></p>
+</blockquote>
+<h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><p>学CSS基础知识的时候就一定知道<code>padding</code>、<code>border</code>、<code>margin</code>，即内边距、边框、外边距，它们三者构成了一个盒子。</p>
+<p>默认情况下，给定了宽度再加上<code>margin</code>、<code>border</code>、<code>padding</code>中的任何一个值，盒子的总体宽度就会发生改变。<br>这样造成其宽度的改变导致页面布局错乱，所以不得不减去盒子内容中的宽度，以达到原本给定的宽度。<br>例如：希望这个盒子的宽度是300px<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span><span class="selector-pseudo">:300px</span>;</span><br><span class="line">`</span><br></pre></td></tr></table></figure></p>
+<p>但是需要加一个外边距<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span><span class="selector-pseudo">:300px</span>;</span><br><span class="line"><span class="selector-tag">padding</span>: 0 10<span class="selector-tag">px</span> 0 10<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure></p>
+<p>这样实际上盒子占的宽度就是300+10+10=320px</p>
+<p>要保证其占的宽度为300px就必须改变盒子内容的宽度<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span><span class="selector-pseudo">:280px</span>;</span><br><span class="line"><span class="selector-tag">padding</span>: 0 10<span class="selector-tag">px</span> 0 10<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure></p>
+<p>那么有没有解决办法呢</p>
+<h3 id="box-sizing-border-box"><a href="#box-sizing-border-box" class="headerlink" title="box-sizing:border-box"></a><code>box-sizing:border-box</code></h3><p>事实上前面<code>width</code>设置的宽度，只是设置了盒子内容的宽度。<br>这条属性可以设置<strong>内容宽度+<code>padding</code>+边框的宽度（不包括margin）</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 300<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">padding</span>: 0 10<span class="selector-tag">px</span> 0 10<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">box-sizing</span><span class="selector-pseudo">:border-box</span></span><br></pre></td></tr></table></figure></p>
+<p>这样子设置的效果就是内容宽度280px+<code>padding</code>20px=300px</p>
+<h1 id="HTML知识"><a href="#HTML知识" class="headerlink" title="HTML知识"></a>HTML知识</h1><h2 id="行内元素和块级元素的区别"><a href="#行内元素和块级元素的区别" class="headerlink" title="行内元素和块级元素的区别"></a>行内元素和块级元素的区别</h2><ol>
+<li>行内元素胡再一条直线上排列，都是同一行的，水平方向排列。块级元素各占据一行，垂直方向排列。块级元素从新行开始结束，结束接着一个断行。</li>
+<li>块级元素可以包括行内元素和块级元素，行内元素不能包含块级元素。</li>
+<li>行内元素设置<code>width</code>无效（可以设置<code>line-height</code>），<code>margin</code>、<code>padding</code>上下无效</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/29/cpp学习笔记/" rel="next" title="cpp学习笔记">
+                <i class="fa fa-chevron-left"></i> cpp学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/10/09/做题记录/" rel="prev" title="做题记录">
+                做题记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/mk.jpeg"
+                alt="yiheDue" />
+            
+              <p class="site-author-name" itemprop="name">yiheDue</p>
+              <p class="site-description motion-element" itemprop="description">DueDueDue</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhongerjin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#变量类型"><span class="nav-number">1.</span> <span class="nav-text">变量类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof"><span class="nav-number">1.1.</span> <span class="nav-text">typeof</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#instanceof"><span class="nav-number">1.2.</span> <span class="nav-text">instanceof</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#值类型和引用类型"><span class="nav-number">1.3.</span> <span class="nav-text">值类型和引用类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于Ajax"><span class="nav-number">2.</span> <span class="nav-text">关于Ajax</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#手写XMLHttpRequest"><span class="nav-number">2.1.</span> <span class="nav-text">手写XMLHttpRequest</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS知识"><span class="nav-number">3.</span> <span class="nav-text">CSS知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器的权重和优先级"><span class="nav-number">3.1.</span> <span class="nav-text">选择器的权重和优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#盒子模型"><span class="nav-number">3.2.</span> <span class="nav-text">盒子模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#box-sizing-border-box"><span class="nav-number">3.2.1.</span> <span class="nav-text">box-sizing:border-box</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML知识"><span class="nav-number">4.</span> <span class="nav-text">HTML知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#行内元素和块级元素的区别"><span class="nav-number">4.1.</span> <span class="nav-text">行内元素和块级元素的区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yiheDue</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

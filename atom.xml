@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>一盒 Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://zhongerjin.github.io/"/>
+  <updated>2022-03-04T08:38:10.368Z</updated>
+  <id>https://zhongerjin.github.io/</id>
+  
+  <author>
+    <name>yiheDue</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微信小程序云开发学习</title>
+    <link href="https://zhongerjin.github.io/2021/12/01/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%91%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://zhongerjin.github.io/2021/12/01/微信小程序云开发学习/</id>
+    <published>2021-12-01T09:50:07.000Z</published>
+    <updated>2022-03-04T08:38:10.368Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;记录一下在开发云函数的过程中遇到的问题&quot;&gt;&lt;a href=&quot;#记录一下在开发云函数的过程中遇到的问题&quot; class=&quot;headerlink&quot; title=&quot;记录一下在开发云函数的过程中遇到的问题&quot;&gt;&lt;/a&gt;记录一下在开发云函数的过程中遇到的问题&lt;/h1&gt;&lt;p&gt;总结
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="小程序" scheme="https://zhongerjin.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习记录</title>
+    <link href="https://zhongerjin.github.io/2021/11/18/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    <id>https://zhongerjin.github.io/2021/11/18/学习记录/</id>
+    <published>2021-11-18T08:59:46.000Z</published>
+    <updated>2022-03-04T08:39:25.734Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写法的改进&quot;&gt;&lt;a href=&quot;#写法的改进&quot; class=&quot;headerlink&quot; title=&quot;写法的改进&quot;&gt;&lt;/a&gt;写法的改进&lt;/h1&gt;&lt;h2 id=&quot;1-关于取值的问题&quot;&gt;&lt;a href=&quot;#1-关于取值的问题&quot; class=&quot;headerlink&quot; ti
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zhongerjin.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>做题记录</title>
+    <link href="https://zhongerjin.github.io/2021/10/09/%E5%81%9A%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    <id>https://zhongerjin.github.io/2021/10/09/做题记录/</id>
+    <published>2021-10-09T08:42:32.000Z</published>
+    <updated>2022-03-04T08:41:52.453Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;小米2021笔试&quot;&gt;&lt;a href=&quot;#小米2021笔试&quot; class=&quot;headerlink&quot; title=&quot;小米2021笔试&quot;&gt;&lt;/a&gt;小米2021笔试&lt;/h1&gt;&lt;h2 id=&quot;第一题&quot;&gt;&lt;a href=&quot;#第一题&quot; class=&quot;headerlink&quot; ti
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="学习" scheme="https://zhongerjin.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基础</title>
+    <link href="https://zhongerjin.github.io/2021/09/23/%E5%9F%BA%E7%A1%80/"/>
+    <id>https://zhongerjin.github.io/2021/09/23/基础/</id>
+    <published>2021-09-23T09:14:44.000Z</published>
+    <updated>2021-10-09T00:58:07.148Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;变量类型&quot;&gt;&lt;a href=&quot;#变量类型&quot; class=&quot;headerlink&quot; title=&quot;变量类型&quot;&gt;&lt;/a&gt;变量类型&lt;/h1&gt;&lt;p&gt;JavaScript是一种动态语言，即不需要定义是什么类型，在程序运行过程中会自动判断类型。&lt;/p&gt;
+&lt;p&gt;6种原始类型：&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>cpp学习笔记</title>
+    <link href="https://zhongerjin.github.io/2020/09/29/cpp%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://zhongerjin.github.io/2020/09/29/cpp学习笔记/</id>
+    <published>2020-09-29T06:44:17.000Z</published>
+    <updated>2022-03-04T09:18:29.743Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;关于形参中的-amp-与&quot;&gt;&lt;a href=&quot;#关于形参中的-amp-与&quot; class=&quot;headerlink&quot; title=&quot;关于形参中的&amp;amp;与*&quot;&gt;&lt;/a&gt;关于形参中的&amp;amp;与*&lt;/h1&gt;&lt;p&gt;刚接触到cpp关于函数的形参有不少疑惑，不知&lt;code&gt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>VScode添加右键 open with code 功能</title>
+    <link href="https://zhongerjin.github.io/2020/09/29/VScode%E6%B7%BB%E5%8A%A0%E5%8F%B3%E9%94%AE-open-with-code-%E5%8A%9F%E8%83%BD/"/>
+    <id>https://zhongerjin.github.io/2020/09/29/VScode添加右键-open-with-code-功能/</id>
+    <published>2020-09-29T03:25:35.000Z</published>
+    <updated>2020-10-27T06:36:11.751Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;由于第一次安装的时候没留意，一直下一步导致漏勾选了”open with code”&lt;/p&gt;
+&lt;p&gt;如何挽救呢？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;方法一：卸载重装/下载最新安装包直接安装
+方法二：修改注册表
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;重装的方法相信大家都知道，就直接上方法
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>promise瞎捣鼓</title>
+    <link href="https://zhongerjin.github.io/2019/05/31/promise%E7%9E%8E%E6%8D%A3%E9%BC%93/"/>
+    <id>https://zhongerjin.github.io/2019/05/31/promise瞎捣鼓/</id>
+    <published>2019-05-31T03:07:43.000Z</published>
+    <updated>2022-03-04T08:43:27.471Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h1&gt;&lt;p&gt;因为接触Promise挺多的，但大都是按部就班的写法，没出什么幺蛾子&lt;br&gt;我是一个富有好奇心的人🧐，肯定是想要折腾的啦&lt;/p&gt;
+&lt;h1 
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zhongerjin.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript块级作用域</title>
+    <link href="https://zhongerjin.github.io/2019/05/09/JavaScript%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F/"/>
+    <id>https://zhongerjin.github.io/2019/05/09/JavaScript块级作用域/</id>
+    <published>2019-05-09T02:00:25.000Z</published>
+    <updated>2019-05-15T11:07:03.459Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;var声明以及变量提升-Hoisting-机制&quot;&gt;&lt;a href=&quot;#var声明以及变量提升-Hoisting-机制&quot; class=&quot;headerlink&quot; title=&quot;var声明以及变量提升(Hoisting)机制&quot;&gt;&lt;/a&gt;var声明以及变量提升(Hoist
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zhongerjin.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微信小程序遇到的问题</title>
+    <link href="https://zhongerjin.github.io/2019/05/06/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://zhongerjin.github.io/2019/05/06/微信小程序遇到的问题/</id>
+    <published>2019-05-06T14:45:13.000Z</published>
+    <updated>2022-03-04T07:14:05.785Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;记录在开发小程序的时候遇到的新坑，毕竟花了不少时间才解决&quot;&gt;&lt;a href=&quot;#记录在开发小程序的时候遇到的新坑，毕竟花了不少时间才解决&quot; class=&quot;headerlink&quot; title=&quot;记录在开发小程序的时候遇到的新坑，毕竟花了不少时间才解决&quot;&gt;&lt;/a&gt;记录
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="小程序" scheme="https://zhongerjin.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用git遇到的问题</title>
+    <link href="https://zhongerjin.github.io/2019/03/25/%E4%BD%BF%E7%94%A8git%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://zhongerjin.github.io/2019/03/25/使用git遇到的问题/</id>
+    <published>2019-03-25T05:54:41.000Z</published>
+    <updated>2020-10-27T06:38:47.457Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写这篇的原因&quot;&gt;&lt;a href=&quot;#写这篇的原因&quot; class=&quot;headerlink&quot; title=&quot;写这篇的原因&quot;&gt;&lt;/a&gt;写这篇的原因&lt;/h1&gt;&lt;p&gt;  因为git是团队协作中最常使用的工具，除了正常操作还会发生一些幺蛾子事故。&lt;br&gt;  为了下次遇到问题不
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="git" scheme="https://zhongerjin.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习Electron</title>
+    <link href="https://zhongerjin.github.io/2019/02/28/%E5%AD%A6%E4%B9%A0Electron/"/>
+    <id>https://zhongerjin.github.io/2019/02/28/学习Electron/</id>
+    <published>2019-02-28T06:09:52.000Z</published>
+    <updated>2019-02-28T08:11:18.654Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h1&gt;&lt;p&gt;Electron是一个可使用JavaScript,html,css编写成桌面应用程序的框架&lt;/p&gt;
+&lt;p&gt;可跨Mac,Linux,Windo
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Electron" scheme="https://zhongerjin.github.io/tags/Electron/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript的赋值,浅拷贝,深拷贝</title>
+    <link href="https://zhongerjin.github.io/2019/02/28/JavaScript%E7%9A%84%E8%B5%8B%E5%80%BC,%E6%B5%85%E6%8B%B7%E8%B4%9D,%E6%B7%B1%E6%8B%B7%E8%B4%9D/"/>
+    <id>https://zhongerjin.github.io/2019/02/28/JavaScript的赋值,浅拷贝,深拷贝/</id>
+    <published>2019-02-28T06:09:33.000Z</published>
+    <updated>2019-03-07T12:44:35.367Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;深拷贝-and-浅拷贝&quot;&gt;&lt;a href=&quot;#深拷贝-and-浅拷贝&quot; class=&quot;headerlink&quot; title=&quot;深拷贝 and 浅拷贝&quot;&gt;&lt;/a&gt;深拷贝 and 浅拷贝&lt;/h1&gt;&lt;h1 id=&quot;ECMAScript的数据类型&quot;&gt;&lt;a href=&quot;#EC
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Javascript" scheme="https://zhongerjin.github.io/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue骨架屏</title>
+    <link href="https://zhongerjin.github.io/2019/02/27/vue%E9%AA%A8%E6%9E%B6%E5%B1%8F/"/>
+    <id>https://zhongerjin.github.io/2019/02/27/vue骨架屏/</id>
+    <published>2019-02-27T12:33:59.000Z</published>
+    <updated>2019-02-28T01:04:54.979Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;正愁没事做的时候看了一下学长的博客，发现了”新东西”——vue预渲染骨架屏&lt;/p&gt;
+&lt;p&gt;其实这个早就出来了，日常生活中使用app基本都能看到，只是没有留意罢了&lt;/p&gt;
+&lt;p&gt;感谢学长😁&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;有一位大佬开发了webpack插件: &lt;a href=&quot;ht
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="vue" scheme="https://zhongerjin.github.io/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>div大小不固定，实现垂直居中</title>
+    <link href="https://zhongerjin.github.io/2019/02/27/div%E5%A4%A7%E5%B0%8F%E4%B8%8D%E5%9B%BA%E5%AE%9A%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/"/>
+    <id>https://zhongerjin.github.io/2019/02/27/div大小不固定，实现垂直居中/</id>
+    <published>2019-02-27T12:13:46.000Z</published>
+    <updated>2019-02-28T01:06:41.860Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;遇到一个问题，假设div大小不固定&lt;/p&gt;
+&lt;p&gt;又有兼容性问题(兼容IE11)&lt;/p&gt;
+&lt;h1 id=&quot;先说说弹性布局吧&quot;&gt;&lt;a href=&quot;#先说说弹性布局吧&quot; class=&quot;headerlink&quot; title=&quot;先说说弹性布局吧&quot;&gt;&lt;/a&gt;先说说弹性布局吧&lt;/h1&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="HTML" scheme="https://zhongerjin.github.io/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>排序</title>
+    <link href="https://zhongerjin.github.io/2018/11/22/%E6%8E%92%E5%BA%8F/"/>
+    <id>https://zhongerjin.github.io/2018/11/22/排序/</id>
+    <published>2018-11-22T12:35:47.000Z</published>
+    <updated>2022-03-04T08:42:39.302Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;快速排序&quot;&gt;&lt;a href=&quot;#快速排序&quot; class=&quot;headerlink&quot; title=&quot;快速排序&quot;&gt;&lt;/a&gt;快速排序&lt;/h2&gt;&lt;h3 id=&quot;原地切分&quot;&gt;&lt;a href=&quot;#原地切分&quot; class=&quot;headerlink&quot; title=&quot;原地切分&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="algs4" scheme="https://zhongerjin.github.io/tags/algs4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue学习小记</title>
+    <link href="https://zhongerjin.github.io/2018/09/02/Vue%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0/"/>
+    <id>https://zhongerjin.github.io/2018/09/02/Vue学习小记/</id>
+    <published>2018-09-02T14:49:10.000Z</published>
+    <updated>2018-09-02T15:35:08.521Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;场景1&quot;&gt;&lt;a href=&quot;#场景1&quot; class=&quot;headerlink&quot; title=&quot;场景1&quot;&gt;&lt;/a&gt;场景1&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;在子组件中需要监听路由变化&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;遇到的问题&quot;&gt;&lt;a hre
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zhongerjin.github.io/tags/JavaScript/"/>
+    
+      <category term="Vue" scheme="https://zhongerjin.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>探究JavaScript继承</title>
+    <link href="https://zhongerjin.github.io/2018/08/28/inheritance/"/>
+    <id>https://zhongerjin.github.io/2018/08/28/inheritance/</id>
+    <published>2018-08-28T14:23:37.000Z</published>
+    <updated>2021-09-29T01:05:41.604Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;拾起被我遗忘在脑后的知识,JavaScript的继承&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;探究JavaScript继承&quot;&gt;&lt;a href=&quot;#探究JavaScript继承&quot; class=&quot;headerlink&quot; title=&quot;探究J
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="https://zhongerjin.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="JavaScript" scheme="https://zhongerjin.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/mk.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/mk.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/mk.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/mk.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Electron," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一盒 Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="介绍Electron是一个可使用JavaScript,html,css编写成桌面应用程序的框架 可跨Mac,Linux,Windows三端 坑Electron有两个进程 主进程 渲染进程  主进程Electron执行时，首次加载的可执行代码资源。要渲染每个GUI页面，就需要有主进程去把控资源的分配、释放主进程加载的文件就是：packages.json 文件中的main字段指向的文件 渲染进程在主进">
+<meta name="keywords" content="Electron">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Electron">
+<meta property="og:url" content="https://zhongerjin.github.io/2019/02/28/学习Electron/index.html">
+<meta property="og:site_name" content="一盒 Blog">
+<meta property="og:description" content="介绍Electron是一个可使用JavaScript,html,css编写成桌面应用程序的框架 可跨Mac,Linux,Windows三端 坑Electron有两个进程 主进程 渲染进程  主进程Electron执行时，首次加载的可执行代码资源。要渲染每个GUI页面，就需要有主进程去把控资源的分配、释放主进程加载的文件就是：packages.json 文件中的main字段指向的文件 渲染进程在主进">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-28T08:11:18.654Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学习Electron">
+<meta name="twitter:description" content="介绍Electron是一个可使用JavaScript,html,css编写成桌面应用程序的框架 可跨Mac,Linux,Windows三端 坑Electron有两个进程 主进程 渲染进程  主进程Electron执行时，首次加载的可执行代码资源。要渲染每个GUI页面，就需要有主进程去把控资源的分配、释放主进程加载的文件就是：packages.json 文件中的main字段指向的文件 渲染进程在主进">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhongerjin.github.io/2019/02/28/学习Electron/"/>
+
+
+
+
+
+  <title>学习Electron | 一盒 Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/zhongerjin" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一盒 Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhongerjin.github.io/2019/02/28/学习Electron/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yiheDue">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mk.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一盒 Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">学习Electron</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T14:09:52+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Electron是一个可使用JavaScript,html,css编写成桌面应用程序的框架</p>
+<p>可跨Mac,Linux,Windows三端</p>
+<h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><h3 id="Electron有两个进程"><a href="#Electron有两个进程" class="headerlink" title="Electron有两个进程"></a>Electron有两个进程</h3><ul>
+<li>主进程</li>
+<li>渲染进程</li>
+</ul>
+<h4 id="主进程"><a href="#主进程" class="headerlink" title="主进程"></a>主进程</h4><p>Electron执行时，首次加载的可执行代码资源。要渲染每个GUI页面，就需要有主进程去把控资源的分配、释放<br>主进程加载的文件就是：packages.json 文件中的main字段指向的文件</p>
+<h4 id="渲染进程"><a href="#渲染进程" class="headerlink" title="渲染进程"></a>渲染进程</h4><p>在主进程创建好窗口之后，需要调用渲染进程渲染页面<br>渲染进程指向的资源也就是事先构建好、要呈现视图的前端代码资源文件</p>
+<h4 id="主进程和渲染进程有何关系"><a href="#主进程和渲染进程有何关系" class="headerlink" title="主进程和渲染进程有何关系"></a>主进程和渲染进程有何关系</h4><ul>
+<li>主进程在创建好后，会再创建一个子进程去请求资源，比如:网络资源，也可以时本地资源</li>
+<li>主进程创建好窗口对象的之后，才会通过子进程去加载资源，窗口创建也是有相应生命周期事件的</li>
+</ul>
+<h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><p>在开发网页应用的时候，需要实现跨页面通信,可以使用LocalStorage和postMessages。Electron也有办法去实现通信。</p>
+<ul>
+<li><p>第一种是<code>ipcMain</code>和<code>ipcRenderer</code>模块<br>在渲染进程中时用ipcRender模块向主进程发送消息,主进程ipcMain接受消息进行操作,如果还需要反馈,则通知渲染进程，渲染进程根据接受的内容执行相应的操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主进程</span></span><br><span class="line"><span class="keyword">const</span> &#123; app, BrowserWindow, ipcMain &#125; = <span class="built_in">require</span>(<span class="string">'electron'</span>)</span><br><span class="line">ipcMain.send(<span class="string">'share'</span>, value)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染进程</span></span><br><span class="line"><span class="keyword">import</span> &#123; remote, dialog, ipcRenderer &#125; <span class="keyword">from</span> <span class="string">'electron'</span></span><br><span class="line">ipcRenderer.on(<span class="string">'share'</span>, (event, value) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(value)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二种是直接在渲染进程使用<code>remote</code>模块，<code>remote</code>模块可以直接获取主进程中的模块,这种方式就是第一种方式的简化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">remote.dialog.showErrorBox(title, content)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三种是主进程向渲染进程发送消息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mainWindow = <span class="keyword">new</span> BrowserWindow(&#123;&#125;)</span><br><span class="line">mainWindow.webContents.send(type, content)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第四种是进程之间的通信</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主进程</span></span><br><span class="line"><span class="comment">// 两个窗口互相获取对方的窗口 id, 并发送给渲染进程</span></span><br><span class="line">win1.webContents.send(<span class="string">'distributeIds'</span>,&#123;</span><br><span class="line">    win2Id : win2.id</span><br><span class="line">&#125;);</span><br><span class="line">win2.webContents.send(<span class="string">'distributeIds'</span>,&#123;</span><br><span class="line">    win1Id : win1.id</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染进程</span></span><br><span class="line"><span class="comment">// 通过 id 得到窗口</span></span><br><span class="line">remote.BrowserWindow.fromId(win2Id).webContents.send(<span class="string">'someMsg'</span>, <span class="string">'someThing'</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Electron/" rel="tag"><i class="fa fa-tag"></i> Electron</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/28/JavaScript的赋值,浅拷贝,深拷贝/" rel="next" title="JavaScript的赋值,浅拷贝,深拷贝">
+                <i class="fa fa-chevron-left"></i> JavaScript的赋值,浅拷贝,深拷贝
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/25/使用git遇到的问题/" rel="prev" title="使用git遇到的问题">
+                使用git遇到的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/mk.jpeg"
+                alt="yiheDue" />
+            
+              <p class="site-author-name" itemprop="name">yiheDue</p>
+              <p class="site-description motion-element" itemprop="description">DueDueDue</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhongerjin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#坑"><span class="nav-number">2.</span> <span class="nav-text">坑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Electron有两个进程"><span class="nav-number">2.0.1.</span> <span class="nav-text">Electron有两个进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主进程"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">主进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#渲染进程"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">渲染进程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主进程和渲染进程有何关系"><span class="nav-number">2.0.1.3.</span> <span class="nav-text">主进程和渲染进程有何关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程通信"><span class="nav-number">2.0.2.</span> <span class="nav-text">进程通信</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yiheDue</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

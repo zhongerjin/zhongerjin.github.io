@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/mk.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/mk.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/mk.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/mk.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一盒 Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="深拷贝 and 浅拷贝ECMAScript的数据类型基本数据类型(undefine, boolean, number, string, null) 基本类型存放在栈中存放在栈内存中的数据大小确定，内存空间大小可以分配，是直接按值存放的，所以可以直接访问 基本数据类型值不可变 除Object(Array, Function)以外的所有所有类型(基本类型)都是不可变的(值本身无法改变)JavaScri">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript的赋值,浅拷贝,深拷贝">
+<meta property="og:url" content="https://zhongerjin.github.io/2019/02/28/JavaScript的赋值,浅拷贝,深拷贝/index.html">
+<meta property="og:site_name" content="一盒 Blog">
+<meta property="og:description" content="深拷贝 and 浅拷贝ECMAScript的数据类型基本数据类型(undefine, boolean, number, string, null) 基本类型存放在栈中存放在栈内存中的数据大小确定，内存空间大小可以分配，是直接按值存放的，所以可以直接访问 基本数据类型值不可变 除Object(Array, Function)以外的所有所有类型(基本类型)都是不可变的(值本身无法改变)JavaScri">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="data:image/png;base64,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">
+<meta property="og:updated_time" content="2019-03-07T12:44:35.367Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript的赋值,浅拷贝,深拷贝">
+<meta name="twitter:description" content="深拷贝 and 浅拷贝ECMAScript的数据类型基本数据类型(undefine, boolean, number, string, null) 基本类型存放在栈中存放在栈内存中的数据大小确定，内存空间大小可以分配，是直接按值存放的，所以可以直接访问 基本数据类型值不可变 除Object(Array, Function)以外的所有所有类型(基本类型)都是不可变的(值本身无法改变)JavaScri">
+<meta name="twitter:image" content="data:image/png;base64,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">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhongerjin.github.io/2019/02/28/JavaScript的赋值,浅拷贝,深拷贝/"/>
+
+
+
+
+
+  <title>JavaScript的赋值,浅拷贝,深拷贝 | 一盒 Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/zhongerjin" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一盒 Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhongerjin.github.io/2019/02/28/JavaScript的赋值,浅拷贝,深拷贝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yiheDue">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mk.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一盒 Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript的赋值,浅拷贝,深拷贝</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T14:09:33+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="深拷贝-and-浅拷贝"><a href="#深拷贝-and-浅拷贝" class="headerlink" title="深拷贝 and 浅拷贝"></a>深拷贝 and 浅拷贝</h1><h1 id="ECMAScript的数据类型"><a href="#ECMAScript的数据类型" class="headerlink" title="ECMAScript的数据类型"></a>ECMAScript的数据类型</h1><h2 id="基本数据类型-undefine-boolean-number-string-null"><a href="#基本数据类型-undefine-boolean-number-string-null" class="headerlink" title="基本数据类型(undefine, boolean, number, string, null)"></a>基本数据类型(<code>undefine, boolean, number, string, null</code>)</h2><hr>
+<h3 id="基本类型存放在栈中"><a href="#基本类型存放在栈中" class="headerlink" title="基本类型存放在栈中"></a>基本类型存放在栈中</h3><p>存放在栈内存中的数据大小确定，内存空间大小可以分配，是直接按值存放的，所以可以直接访问</p>
+<h3 id="基本数据类型值不可变"><a href="#基本数据类型值不可变" class="headerlink" title="基本数据类型值不可变"></a>基本数据类型值不可变</h3><blockquote>
+<p>除Object(Array, Function)以外的所有所有类型(基本类型)都是不可变的(值本身无法改变)<br>JavaScript中对字符串操作返回的是一个新字符串，原始字符串没有改变</p>
+</blockquote>
+<h3 id="基本类型的比较是值的比较"><a href="#基本类型的比较是值的比较" class="headerlink" title="基本类型的比较是值的比较"></a>基本类型的比较是值的比较</h3><p>基本类型的比较是值的比较,只要它们的值相等就认为他们是相等的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a === b);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>比较的时候最好使用全等符号，因为<code>==</code>是会进行隐式类型转换<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="literal">true</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a == b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><hr>
+<h3 id="引用类型存在堆中"><a href="#引用类型存在堆中" class="headerlink" title="引用类型存在堆中"></a>引用类型存在堆中</h3><p>引用类型(<code>Object</code>)是存放在堆内存中的，变量实际上是一个存放在栈内存的指针<br>这个指针指向堆内存中的地址。每个空间大小不一样，要根据情况进行特定的分配<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;<span class="attr">name</span>: <span class="string">'xiaomi'</span>&#125;</span><br><span class="line"><span class="keyword">let</span> person2 = &#123;<span class="attr">name</span>: <span class="string">'redmi'</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>栈区</th>
+<th>栈区</th>
+<th>指针</th>
+<th>堆区   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>person1</td>
+<td>栈内存地址1</td>
+<td>———————&gt;</td>
+<td>object1</td>
+</tr>
+<tr>
+<td>person2</td>
+<td>栈内存地址2</td>
+<td>———————&gt;</td>
+<td>object2 </td>
+</tr>
+</tbody>
+</table>
+<h3 id="引用类型值可变"><a href="#引用类型值可变" class="headerlink" title="引用类型值可变"></a>引用类型值可变</h3><p>引用类型是可以直接改变其值的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">a[<span class="number">2</span>] = <span class="number">666</span></span><br><span class="line"><span class="built_in">console</span>.log(a[<span class="number">2</span>]); <span class="comment">//  666</span></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// [1,2,666,4]</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="引用类型的比较是引用的比较"><a href="#引用类型的比较是引用的比较" class="headerlink" title="引用类型的比较是引用的比较"></a>引用类型的比较是引用的比较</h3><p>我们对js中的引用类型进行操作的时候，都是操作其对象的应用(保存在栈内存中的指针)<br>所以比较两个引用类型，要看他们的引用是否指向同一个对象<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a === b); <span class="comment">//  false</span></span><br></pre></td></tr></table></figure></p>
+<p>虽然变量a和变量b的值都是<code>[1,2,3]</code>，但是其在内存中的位置不一样<br>就是说a和b指向的不是一个对象，所以他们是不相等的</p>
+<table>
+<thead>
+<tr>
+<th>栈区</th>
+<th>栈区</th>
+<th></th>
+<th>堆区   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>   a</td>
+<td>栈内存地址1</td>
+<td>———————&gt;</td>
+<td>[1,2,3] </td>
+</tr>
+<tr>
+<td>   b</td>
+<td>栈内存地址2</td>
+<td>———————&gt;</td>
+<td>[1,2,3] </td>
+</tr>
+</tbody>
+</table>
+<h2 id="传值与传地址"><a href="#传值与传地址" class="headerlink" title="传值与传地址"></a>传值与传地址</h2><hr>
+<p>区分基本类型和引用类型之后，我们应该就能明白传值和传地址的区别了<br>在我们进行赋值操作的时候，基本赋值操作<code>=</code>是在内存中新开辟一段栈内存，然后再将值赋值到新的栈中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">let</span> b = a;</span><br><span class="line">a++;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">//  11</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">//  10</span></span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>给b初始化前的栈区</th>
+<th></th>
+<th>给b初始化后的栈区   </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> a  10</td>
+<td>———————&gt;</td>
+<td>b 10 </td>
+</tr>
+<tr>
+<td> &nbsp;</td>
+<td>———————&gt;</td>
+<td>a 10 </td>
+</tr>
+</tbody>
+</table>
+<p>所以说，基本类型的赋值的两个变量是两个独立相互不影响的变量</p>
+<p>但是引用类型的赋值时传值，只是改变了被赋值对象的指针指向<br>这样的话两个对象的指针指向的就是同一个对象了，因此两者之间操作互相有影响<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = &#123;&#125;; <span class="comment">//  a保存了一个空对象的实例</span></span><br><span class="line"><span class="keyword">let</span> b = a; <span class="comment">//  ah和b都指向了这个空对象</span></span><br><span class="line"></span><br><span class="line">a.name = <span class="string">'xiaomi'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a.name); <span class="comment">//  xiaomi</span></span><br><span class="line"><span class="built_in">console</span>.log(b.name); <span class="comment">//  xiaomi</span></span><br><span class="line"></span><br><span class="line">b.age = <span class="number">22</span>;</span><br><span class="line"><span class="built_in">console</span>.log(b.age); <span class="comment">//  22</span></span><br><span class="line"><span class="built_in">console</span>.log(a.age); <span class="comment">//  22</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a == b); <span class="comment">//  true</span></span><br></pre></td></tr></table></figure></p>
+<p> <img src="data:image/png;base64,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" alt="avatar"></p>
+<h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><p> 我以为<code>=</code>就是拷贝，其实应该只能算是”引用”,并不算真正的浅拷贝</p>
+<h2 id="赋值-和浅拷贝的区别"><a href="#赋值-和浅拷贝的区别" class="headerlink" title="赋值(=)和浅拷贝的区别"></a>赋值(=)和浅拷贝的区别</h2><hr>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    name:<span class="string">'xiaomi'</span>,</span><br><span class="line">    age: <span class="string">'18'</span>,</span><br><span class="line">    language: [<span class="number">1</span>,[<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>]]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = obj1;</span><br><span class="line"><span class="keyword">let</span> obj3 = shallowCopy(obj1);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> dst = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> prop <span class="keyword">in</span> src) &#123;</span><br><span class="line">        <span class="keyword">if</span> (src.hasOwnProperty(prop)) &#123;</span><br><span class="line">        dst[prop] = src[prop];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dst;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj2.name = <span class="string">'xiaomimi'</span>;</span><br><span class="line">obj3.age = <span class="number">19</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1) <span class="comment">// &#123;"name":"xiaomimi","age":"18","language":[1,[2,3],[4,5]]&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2) <span class="comment">// &#123;"name":"xiaomimi","age":"18","language":[1,[2,3],[4,5]]&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj3) <span class="comment">// &#123;"name":"xiaomi","age":19,"language":[1,[2,3],[4,5]]&#125;</span></span><br></pre></td></tr></table></figure>
+<p> 先定义各一个对象<code>obj1</code>，通过赋值得到第二个对象<code>obj2</code>，然后通过浅拷贝将<code>ob1</code>的属性都赋值到<code>obj3</code>。也就是:</p>
+<ul>
+<li><code>obj1</code>:原始数据</li>
+<li><code>obj2</code>:赋值得到的</li>
+<li><code>obj3</code>:浅拷贝得到的</li>
+</ul>
+<p>然后我们改变<code>obj2</code>的<code>name</code>属性和<code>obj3</code>的<code>name</code>，可以看出来，改变<code>obj2</code>同时也会改变原始值<code>obj1</code>,而通过浅拷贝得到的<code>obj3</code>改变也不会影响到<code>obj1</code>。<br>这就可以说明<code>obj2</code>只是将指针改变，其引用的仍然是同一个对象，而<code>obj3</code>则创建的是一个新对象。</p>
+<p>接下来改变引用类型，看一下会发生什么</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">obj2.language[<span class="number">1</span>] = [<span class="number">666</span>,<span class="number">666</span>];</span><br><span class="line">obj3.language[<span class="number">2</span>] = [<span class="number">777</span>,<span class="number">777</span>];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(obj1) <span class="comment">// &#123;"name":"xiaomimi","age":"18","language":[1,[666,666],[777,777]]&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2) <span class="comment">// &#123;"name":"xiaomimi","age":"18","language":[1,[666,666],[777,777]]&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj3) <span class="comment">// &#123;"name":"xiaomi","age":19,"language":[1,[666,666],[777,777]]&#125;</span></span><br></pre></td></tr></table></figure>
+<p>改变了<code>obj2</code>和<code>obj3</code>中的<code>language</code>属性的第二个值和第三个值之后，可以看到无论是<code>obj2</code>还是<code>obj3</code>都会改变原始数据。<br>这是因为浅拷贝只复制一层对象的属性，并不包括对象里面为引用类型的数据。所以就会出现浅拷贝得到的<code>obj3</code>改变数据时，原始数据也会改变。</p>
+<h1 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h1><p>好，现在让我们来看一下深拷贝与浅拷贝有何不同<br>从字面意思上来看就是<code>&quot;更深层次地拷贝&quot;</code><br>那么如何更深层次地拷贝呢？<br>思路就是递归调用刚刚地浅拷贝，把所有属于对象属性类型都遍历赋值给另外一个对象</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> objArray = <span class="built_in">Array</span>.isArray(obj) ? [] : &#123;&#125;;</span><br><span class="line">    <span class="comment">//如果obj存在，且类型为对象</span></span><br><span class="line">    <span class="keyword">if</span>(obj &amp;&amp; <span class="keyword">typeof</span> obj === <span class="string">'object'</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">            <span class="keyword">if</span>(obj.hasOwnProperty(key)) &#123;</span><br><span class="line">                <span class="comment">//如果obj的子元素是对象，则递归操作</span></span><br><span class="line">                <span class="keyword">if</span>(obj[key] &amp;&amp; typeofo obj[key] === <span class="string">'object'</span>) &#123;</span><br><span class="line">                    objArray[key] = deepCopy(obj[key]);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//如果不是，直接赋值</span></span><br><span class="line">                    objArray[key] = obj[key];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回新的对象</span></span><br><span class="line">    <span class="keyword">return</span> objArray;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">    name:<span class="string">'xiaomi'</span>,</span><br><span class="line">    age: <span class="string">'18'</span>,</span><br><span class="line">    language: [<span class="number">1</span>,[<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>]]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = deepCopy(obj1);</span><br><span class="line">obj2.language[<span class="number">1</span>] = [<span class="number">666</span>,<span class="number">666</span>];</span><br><span class="line"><span class="built_in">console</span>.log(obj1) <span class="comment">// &#123;"name":"xiaomi","age":"18","language":[1,[2,3],[4,5]]&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2) <span class="comment">// &#123;"name":"xiaomi","age":"18","language":[1,[666,666],[4,5]]&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="意外发现一行很厉害的代码"><a href="#意外发现一行很厉害的代码" class="headerlink" title="意外发现一行很厉害的代码"></a>意外发现一行很厉害的代码</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj))</span><br></pre></td></tr></table></figure>
+<p>但是有个缺点</p>
+<ul>
+<li>它不能复制函数</li>
+<li>原型链没了，对象就是Object，所属的类没了<br>但是直接调用官方的写法还是非常简便的</li>
+</ul>
+<p><strong>浅拷贝:将原对象拷贝到新对象中，但不包括原对象里面的子对象</strong><br><strong>深拷贝:将原对象拷贝到新对象中，包括原对象里面的子对象</strong></p>
+<table>
+<thead>
+<tr>
+<th>&nbsp;</th>
+<th>和原数据是否指向同一个对象</th>
+<th>第一层数据为基本数据类型</th>
+<th>原数据中包含子对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  赋值</td>
+<td>是</td>
+<td>改变会使原数据一同改变</td>
+<td>改变会使原数据一同改变</td>
+</tr>
+<tr>
+<td>  浅拷贝</td>
+<td>否</td>
+<td>改变不会使原数据一同改变</td>
+<td>改变会使原数据一同改变</td>
+</tr>
+<tr>
+<td>  深拷贝</td>
+<td>否</td>
+<td>改变不会使原数据一同改变</td>
+<td>改变不会使原数据一同改变</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i> Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/27/vue骨架屏/" rel="next" title="vue骨架屏">
+                <i class="fa fa-chevron-left"></i> vue骨架屏
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/28/学习Electron/" rel="prev" title="学习Electron">
+                学习Electron <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/mk.jpeg"
+                alt="yiheDue" />
+            
+              <p class="site-author-name" itemprop="name">yiheDue</p>
+              <p class="site-description motion-element" itemprop="description">DueDueDue</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhongerjin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#深拷贝-and-浅拷贝"><span class="nav-number">1.</span> <span class="nav-text">深拷贝 and 浅拷贝</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ECMAScript的数据类型"><span class="nav-number">2.</span> <span class="nav-text">ECMAScript的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型-undefine-boolean-number-string-null"><span class="nav-number">2.1.</span> <span class="nav-text">基本数据类型(undefine, boolean, number, string, null)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型存放在栈中"><span class="nav-number">2.1.1.</span> <span class="nav-text">基本类型存放在栈中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型值不可变"><span class="nav-number">2.1.2.</span> <span class="nav-text">基本数据类型值不可变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型的比较是值的比较"><span class="nav-number">2.1.3.</span> <span class="nav-text">基本类型的比较是值的比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用类型"><span class="nav-number">2.2.</span> <span class="nav-text">引用类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型存在堆中"><span class="nav-number">2.2.1.</span> <span class="nav-text">引用类型存在堆中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型值可变"><span class="nav-number">2.2.2.</span> <span class="nav-text">引用类型值可变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用类型的比较是引用的比较"><span class="nav-number">2.2.3.</span> <span class="nav-text">引用类型的比较是引用的比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传值与传地址"><span class="nav-number">2.3.</span> <span class="nav-text">传值与传地址</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浅拷贝"><span class="nav-number">3.</span> <span class="nav-text">浅拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#赋值-和浅拷贝的区别"><span class="nav-number">3.1.</span> <span class="nav-text">赋值(=)和浅拷贝的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深拷贝"><span class="nav-number">4.</span> <span class="nav-text">深拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#意外发现一行很厉害的代码"><span class="nav-number">4.1.</span> <span class="nav-text">意外发现一行很厉害的代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yiheDue</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
